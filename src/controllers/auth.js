@@ -37,7 +37,7 @@ export const register = async ( req, res ) => {
             }
 
             const saltRounds = 10;
-            const hashedPassword = bcrypt.hash( saltRounds, password)
+            const hashedPassword = await bcrypt.hash( password, saltRounds)
 
             const existingUser = await User.findOne({
                 $or: [{ username}, {email}]
@@ -103,7 +103,7 @@ export const register = async ( req, res ) => {
                 status: StatusCodes.INTERNAL_SERVER_ERROR
             })
         }
-}
+};
 
 export const login = async ( req, res ) => {
     try {

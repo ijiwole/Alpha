@@ -18,7 +18,8 @@ authRouter.route("/register").post(
     ]),
     register   
 );
-authRouter.route("{/login").post(login)
+authRouter.route("/register").post(register)
+authRouter.route("/login").post(login)
 authRouter.route("/logout").post(logout)
 authRouter.route("/changePassword").post(changePassword)
 authRouter.route("/getSingleUser", ).post(protect_user, getSingleUser)
