@@ -45,7 +45,7 @@ export const getAllVideos = async (req, res) => {
     }
 };
 
-export const publishAvideo = async( req, res ) => {
+export const publishVideo = async( req, res ) => {
     try {
         
         const { title, description } = req.body;

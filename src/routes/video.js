@@ -1,6 +1,6 @@
 import express from "express"
 import { protect_user } from "../middlewares/auth.js"
-import { deleteVideo, getAllVideos, getVideoById, publishAvideo, togglePublishStatus, updateVideo } from "../controllers/video.js"
+import { deleteVideo, getAllVideos, getVideoById, publishVideo, togglePublishStatus, updateVideo } from "../controllers/video.js"
 import { upload } from "../middlewares/upload.js"
 
 const videoRouter = express.Router()
@@ -16,7 +16,7 @@ videoRouter.route("/publish ").post(upload.fields([
         name: "thumbnail",
         maxCount: 1,
     },
-]), publishAvideo
+]), publishVideo
 );
 videoRouter.route("/:videoId").get(getVideoById);
 videoRouter.route("/:videoId").delete(deleteVideo);
