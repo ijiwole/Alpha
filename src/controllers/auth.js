@@ -5,25 +5,25 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken';
 import { deleteFromCloudinary, uploadOnCloudinary } from '../utils/cloudinary.js'
 
-const generateAccessAndRefreshTokens = async ( userId ) => {
-    try {
+// export const generateAccessAndRefreshTokens = async ( userId ) => {
+//     try {
 
-        const user = await User.findById(userId)
-        const accessToken = user.generateAccessToken()
-        const refreshToken = user.refreshAccessToken()
+//         const user = await User.findById(userId)
+//         const accessToken = user.generateAccessToken()
+//         const refreshToken = user.refreshAccessToken()
 
-        user.refreshToken = refreshToken
-        await user.save({ validateBeforeSave: false})
+//         user.refreshToken = refreshToken
+//         await user.save({ validateBeforeSave: false})
 
-        return { accessToken, refreshToken}
+//         return { accessToken, refreshToken}
 
-    } catch (error) {
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-            message: "Internal Server Error",
-            status: StatusCodes.INTERNAL_SERVER_ERROR
-        });
-    };
-};
+//     } catch (error) {
+//         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+//             message: "Internal Server Error",
+//             status: StatusCodes.INTERNAL_SERVER_ERROR
+//         });
+//     };
+// };
 export const register = async ( req, res ) => {
         try {
             
@@ -160,7 +160,7 @@ export const login = async ( req, res ) => {
             status: StatusCodes.INTERNAL_SERVER_ERROR
         })
     }
-}
+};
 
 export const logout = async( req, res) => {
     await User.findByIdAndUpdate(
@@ -185,9 +185,8 @@ export const logout = async( req, res) => {
         message: "Logout Successful",
         status: StatusCodes.OK
     });
-}
+};
  
-
 export const refreshAccessToken = async( req, res ) => {
     // get an incoming refresh token
     const incomingRefreshToken = req.cookies.refreshToken || req.body.refreshToken;
@@ -244,7 +243,7 @@ export const refreshAccessToken = async( req, res ) => {
             status: StatusCodes.INTERNAL_SERVER_ERROR
         })
     }
-}
+};
 
 export const changePassword = async ( req, res )=> {
     try {
@@ -283,8 +282,7 @@ export const changePassword = async ( req, res )=> {
             status: StatusCodes.INTERNAL_SERVER_ERROR
         })
     }
-}
-
+};
 
 export const getSingleUser = async( req, res ) => {
     try {
@@ -310,7 +308,7 @@ export const getSingleUser = async( req, res ) => {
             status: StatusCodes.INTERNAL_SERVER_ERROR
         })
     }
-}
+};
 
 export const updateUserProfile = async( req, res )=> {
     try {
@@ -343,7 +341,7 @@ export const updateUserProfile = async( req, res )=> {
             status: StatusCodes.INTERNAL_SERVER_ERROR
         });
     }
-}
+};
 
 export const updateUserAvatar = async ( req, res) => {
     try {   
@@ -376,7 +374,7 @@ export const updateUserAvatar = async ( req, res) => {
             status: StatusCodes.INTERNAL_SERVER_ERROR
         });
     }
-}
+};
 
 export const updateUserCoverImage = async ( req, res ) => {
     try {
@@ -423,7 +421,7 @@ export const updateUserCoverImage = async ( req, res ) => {
             });
         }
     
-}
+};
 
 export const getUserChannelProfile = async (req, res) => {
     try {
